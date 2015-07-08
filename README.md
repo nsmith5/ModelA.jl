@@ -2,8 +2,6 @@
 
 ## Introduction
 
-![](/home/nathan/figure_1.png)
-
 Welcome to the Model A simulator! In the narrowest sense this is a place to see a particular stochastic partial differential equation solved that is of the following form:
 
 $$ \frac{\partial \phi (x,t)}{\partial t} = -M \left( W_o^2 \nabla^2 \phi - a_2 \phi - a_4 \phi^3 \right) + \zeta (x,t)   $$
