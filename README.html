@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{color:#444;font-family:Georgia,Palatino,"Palatino Linotype",Times,"Times New Roman",serif;font-size:12px;line-height:1.5em;padding:1em;margin:auto;max-width:42em;background:#fefefe}a{color:#0645ad;text-decoration:none}a:visited{color:#0b0080}a:hover{color:#06e}a:active{color:#faa700}a:focus{outline:dotted thin}a:active,a:hover{outline:0}::-moz-selection{background:rgba(255,255,0,.3);color:#000}::selection{background:rgba(255,255,0,.3);color:#000}a::-moz-selection{background:rgba(255,255,0,.3);color:#0645ad}a::selection{background:rgba(255,255,0,.3);color:#0645ad}p{margin:1em 0}img{max-width:100%}h1,h2,h3,h4,h5,h6{font-weight:400;color:#111;line-height:1em}h4,h5,h6{font-weight:700}h1{font-size:2.5em}h2{font-size:2em}h3{font-size:1.5em}h4{font-size:1.2em}h5{font-size:1em}h6{font-size:.9em}blockquote{color:#666;margin:0;padding-left:3em;border-left:.5em #EEE solid}hr{display:block;height:2px;border:0;border-top:1px solid #aaa;border-bottom:1px solid #eee;margin:1em 0;padding:0}code,kbd,pre,samp{color:#000;font-family:monospace,monospace;font-size:.98em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}b,strong{font-weight:700}dfn{font-style:italic}ins{background:#ff9;color:#000;text-decoration:none}mark{background:#ff0;color:#000;font-style:italic;font-weight:700}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}ol,ul{margin:1em 0;padding:0 0 0 2em}li p:last-child{margin:0}dd{margin:0 0 0 2em}img{border:0;-ms-interpolation-mode:bicubic;vertical-align:middle}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}@media only screen and (min-width:480px){body{font-size:14px}}@media only screen and (min-width:768px){body{font-size:16px}}@media print{*{background:0 0!important;color:#000!important;filter:none!important;-ms-filter:none!important}body{font-size:12pt;max-width:100%}a,a:visited{text-decoration:underline}hr{height:1px;border:0;border-bottom:1px solid #000}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;padding-right:1em;page-break-inside:avoid}img,tr{page-break-inside:avoid}img{max-width:100%!important}@page :left{margin:15mm 20mm 15mm 10mm}@page :right{margin:15mm 10mm 15mm 20mm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#aaa}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}
+  </style>
+ </head>
+ <body>
+  <h1>
+   Model A Simulator
+  </h1>
+  <h2>
+   Introduction
+  </h2>
+  <p>
+   <img alt="" src="./figure_1.png"/>
+  </p>
+  <p>
+   Welcome to the Model A simulator! In the narrowest sense this is a place to see a particular stochastic partial differential equation solved that is of the following form:
+  </p>
+  <p>
+   $$ \frac{\partial \phi (x,t)}{\partial t} = -M \left( W_o^2 \nabla^2 \phi - a_2 \phi - a_4 \phi^3 \right) + \zeta (x,t)   $$
+  </p>
+  <p>
+   Where the driving force $\zeta(x,t)$ is a gaussian random variable with the following statistics:
+  </p>
+  <p>
+   $$ \left&lt; \zeta(x,t) \right&gt; = 0, \,\,\,\,\,\,
+   <br/>
+   \left&lt; \zeta(x_1, t_1) \zeta(x_2, t_2) \right&gt; = 2 M k_b T \delta(x_2 - x_1) \delta(t_2 - t_1). $$
+  </p>
+  <p>
+   The importance of Model A or
+   <em>
+    time-dependent Ginzburg-Landau equation
+   </em>
+   is that it is model of the dynamics of a non-conserved order parameter.
+  </p>
+  <h3>
+   Discrete models
+  </h3>
+  <p>
+   To understand what is meant by this, consider for a moment the Ising model.
+  </p>
+  <p>
+   $$ \beta H = \sum_{\left&lt; i, j \right&gt;} J_{ij} \sigma_i \sigma_j + h \sum_i \sigma_i$$
+  </p>
+  <p>
+   The variables $\sigma$ are the spin angular momenta of individual atoms in a discrete lattice. At this point if you'd like to simulate the dynamics of a lattice you can impose one of two different types of kinetics: Glauber or Kawasaki.
+  </p>
+  <p>
+   In Glauber kinetics the total angular moment is not conserved. The free energy cost of a spin flip is calculated at any site and the probability of flipping is weighted accordingly.
+  </p>
+  <p>
+   Alternatively, in Kawasaki dynamics, the total angular momentum is conserved. Specifically the angular momentum is conserved locally by implimenting a set of kinetics that local rearranges a small domain of spins instead of flipping them. Again, the cost of all rearrangements is considered and probabilities of those rearrangements are weighted accordingly.
+  </p>
+  <h3>
+   Continuum models
+  </h3>
+  <p>
+   In Ginzburg-Landau theory, continuous fields are considered at the thermodynamic variables of interest. These field are almost always coarse grained variables from discrete systems. If we take the Ising model again, for example, we can construct a coase grained field from our discrete spins through an averaging process. Consider of ball of radius $R$ centered at position $x$. We can define a field $S(x)$ such that it is the average of all spins, $\sigma$, inside the ball. As radius of the ball increases the field becomes continuous and we've constructed a coarsed-grained order parameter.
+  </p>
+  <p>
+   Ginzburg-Landau theory considers the thermodynamics of such fields and once again, if we'd like to simulate the dynamics of such fields we are left with a choice between two different types of kinetics: conserved and non-conserved. The continuum version of our discrete Glauber kinetics is called model A. As we stated before it simulated the dynamics of a non-conserved order parameter.
+  </p>
+  <p>
+   For a general order parameter $\phi$ the equation of motion is written as:
+  </p>
+  <p>
+   $$ \frac{\partial \phi(x,t)}{\partial t}  = - M \frac{\delta H[\phi]}{\delta \phi(x,t)} + \zeta (x,t) $$
+  </p>
+  <p>
+   Where the source term $\zeta$ follows the above mentioned statistics and $H[\phi]$ is the Ginzburg free energy functional of the system. In our case we'll use a simple $\phi^4$ model for the free energy functional:
+  </p>
+  <p>
+   $$ H_{\phi^4}[\phi] =  \int d^d x \lbrace  (W_o \nabla \phi)^2 + a_2 (\phi)^2 + a_4 (\phi)^4  \rbrace $$
+  </p>
+  <h2>
+   Simulating
+  </h2>
+  <p>
+   All of the code is written in
+   <em>
+    Julia
+   </em>
+   (0.3 release should work) but also requires
+   <em>
+    Python
+   </em>
+   and a python package called
+   <em>
+    Matplotlib
+   </em>
+   .
+  </p>
+  <ul>
+   <li>
+    Julia info: http://julialang.org
+   </li>
+   <li>
+    Matplotlib: http://matplotlib.org
+   </li>
+  </ul>
+  <p>
+   To enable Matplotlib calls from Julia just install the PyPlot package inside the Julia shell via:
+  </p>
+  <pre><code>julia&gt; Pkg.add("PyPlots")
+</code></pre>
+  <p>
+   Afterwards the simulation can be from the command line from the installation folder
+  </p>
+  <pre><code>&gt; julia script.jl
+</code></pre>
+  <p>
+   Parameters can be changed inside the script.jl where the relevent parameters are commented.
+  </p>
+  <h2>
+   Contact Info
+  </h2>
+  <p>
+   This model code repository and set of notes was made by me to learn and help teach topics in thermodynamics. The notes and code are free to use and distribute so long as they are properly attributed to me (eg. don't pretend you made these please).
+  </p>
+  <ul>
+   <li>
+    Nathan Smith
+   </li>
+   <li>
+    nathan.smith5@mail.mcgill.ca
+   </li>
+   <li>
+    http://www.nate-smith.net
+   </li>
+  </ul>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
