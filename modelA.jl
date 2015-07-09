@@ -77,5 +77,4 @@ function step!(ϕ::Array{Float64, 2}, mod::model, prmtr::parameters)
   return ϕ
 end
 
-
 end
