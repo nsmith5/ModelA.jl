@@ -63,23 +63,35 @@
    Continuum models
   </h3>
   <p>
-   In Ginzburg-Landau theory, continuous fields are considered at the thermodynamic variables of interest. These field are almost always coarse grained variables from discrete systems. If we take the Ising model again, for example, we can construct a coase grained field from our discrete spins through an averaging process. Consider of ball of radius $R$ centered at position $x$. We can define a field $S(x)$ such that it is the average of all spins, $\sigma$, inside the ball. As radius of the ball increases the field becomes continuous and we've constructed a coarsed-grained order parameter.
-  </p>
+   In Ginzburg-Landau theory, continuous fields are considered at the
+   thermodynamic variables of interest. These field are almost always coarse
+   grained variables from discrete systems. If we take the Ising model again,
+   for example, we can construct a coase grained field from our discrete spins
+   through an averaging process. Consider of ball of radius $R$ centered at
+   position $x$. We can define a field $S(x)$ such that it is the average of
+   all spins, $\sigma$, inside the ball. As radius of the ball increases the
+   field becomes continuous and we've constructed a coarsed-grained order
+   parameter.  </p>
   <p>
-   Ginzburg-Landau theory considers the thermodynamics of such fields and once again, if we'd like to simulate the dynamics of such fields we are left with a choice between two different types of kinetics: conserved and non-conserved. The continuum version of our discrete Glauber kinetics is called model A. As we stated before it simulated the dynamics of a non-conserved order parameter.
-  </p>
+   Ginzburg-Landau theory considers the thermodynamics of such fields and once
+   again, if we'd like to simulate the dynamics of such fields we are left with
+   a choice between two different types of kinetics: conserved and
+   non-conserved. The continuum version of our discrete Glauber kinetics is
+   called model A. As we stated before it simulated the dynamics of a
+   non-conserved order parameter.  </p>
   <p>
    For a general order parameter $\phi$ the equation of motion is written as:
   </p>
   <p>
-   $$ \frac{\partial \phi(x,t)}{\partial t}  = - M \frac{\delta H[\phi]}{\delta \phi(x,t)} + \zeta (x,t) $$
-  </p>
+   $$ \frac{\partial \phi(x,t)}{\partial t}  = - M \frac{\delta H[\phi]}{\delta
+   \phi(x,t)} + \zeta (x,t) $$ </p>
   <p>
-   Where the source term $\zeta$ follows the above mentioned statistics and $H[\phi]$ is the Ginzburg free energy functional of the system. In our case we'll use a simple $\phi^4$ model for the free energy functional:
-  </p>
+   Where the source term $\zeta$ follows the above mentioned statistics and
+   $H[\phi]$ is the Ginzburg free energy functional of the system. In our case
+   we'll use a simple $\phi^4$ model for the free energy functional: </p>
   <p>
-   $$ H_{\phi^4}[\phi] =  \int d^d x \lbrace  (W_o \nabla \phi)^2 + a_2 (\phi)^2 + a_4 (\phi)^4  \rbrace $$
-  </p>
+   $$ H_{\phi^4}[\phi] =  \int d^d x \lbrace  (W_o \nabla \phi)^2 + a_2
+   (\phi)^2 + a_4 (\phi)^4  \rbrace $$ </p>
   <h2>
    Simulating
   </h2>
